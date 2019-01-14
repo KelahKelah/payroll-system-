@@ -1,31 +1,35 @@
 <?php
-// html login form for this project
-include('login.php'); // Includes Login Script
-
-if(isset($_SESSION['login_user'])){
-header("location: profile.php");
+include('login.php'); // Include Login Script
+if ((isset($_SESSION['username']) != ''))
+{
+header('Location: home.php');
 }
 ?>
-<!DOCTYPE html>
+ 
+<!doctype html>
 <html>
 <head>
-<title>Login Form in PHP with Session</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8">
+<title>Login </title>
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
+ 
 <body>
-<div id="main">
-<h1>PHP Login Session Example</h1>
-<div id="login">
-<h2>Login Form</h2>
-<form action="" method="post">
-<label>UserName :</label>
-<input id="name" name="username" placeholder="username" type="text">
-<label>Password :</label>
-<input id="password" name="password" placeholder="**********" type="password">
-<input name="submit" type="submit" value=" Login ">
-<span><?php echo $error; ?></span>
+<h1>Login To Your Account</h1>
+<div class="loginBox">
+<br><br>
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+<label>Username:</label><br>
+<input type="text" name="username" placeholder="username" /><br><br>
+<label>Password:</label><br>
+<input type="password" name="password" placeholder="password" />  <br><br>
+<input type="submit" name="submit" value="Login" />
 </form>
-</div>
+<div class="error"><?php echo $error;?></div>
 </div>
 </body>
 </html>
+
+
+
+
